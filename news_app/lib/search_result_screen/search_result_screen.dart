@@ -1,7 +1,6 @@
 import 'package:depi_bloc/home/home_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../home_details/home_details.dart';
 
 class SearchResultScreen extends StatelessWidget {

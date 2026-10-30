@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:store_depi_3/core/helpers/app_button.dart';
 import 'package:store_depi_3/core/helpers/app_field.dart';
+import 'package:store_depi_3/widets/header_auth.dart';
 
 class SignUp extends StatelessWidget {
   const SignUp({super.key});
@@ -16,18 +17,12 @@ class SignUp extends StatelessWidget {
            crossAxisAlignment: CrossAxisAlignment.stretch,
             spacing: 12,
             children: [
-              Image.network('src',height: 150,),
-              Text('dhb',
-                textAlign: TextAlign.center
-                ,style: TextStyle(fontWeight: FontWeight.bold,
-                  fontSize: 14,color: Colors.grey.shade300),),
-
-              //namefield
-
+              HeaderAuth(title: 'Create New Account', header: 'Looks Like you dont an account \n or connect with social media network'),
               AppField(hintText: 'Name', icon:Icons.person),
               AppField(hintText: 'Email', icon:Icons.mail),
               AppField(hintText: 'PassWord', icon:Icons.lock_outline_rounded),
               AppField(hintText: 'ConfirmPassWord', icon:Icons.lock_outline_rounded),
+              SizedBox(height: 20,),
               AppButton(onPressed:(){} , text: 'SignUp'),
 
             ],

@@ -1,8 +1,4 @@
-
-
-
 import 'package:flutter/material.dart';
-
 import '../circle_icon/circle_icon.dart';
 
 class CustomAppbarDetails extends StatelessWidget implements PreferredSizeWidget{

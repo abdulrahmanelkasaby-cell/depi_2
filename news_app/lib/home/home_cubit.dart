@@ -1,12 +1,6 @@
-
-
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../models/article_model.dart';
-
-
-
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
@@ -19,7 +13,7 @@ class HomeCubit extends Cubit<HomeState> {
      final Response response =
     await dio.get("https://newsapi.org/v2/top-headlines",
         queryParameters:{
-      'apiKey':'6cfb10f790934afe8ae4cf35fe745ebf',
+      'apiKey':'04248cc7126c4bf5a70b3589bffacf65',
       'country':'us'
     });
      final article =response.data['articles'] as List;

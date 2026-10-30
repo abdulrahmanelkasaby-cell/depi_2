@@ -21,14 +21,18 @@ class AppField extends StatelessWidget {
       decoration: InputDecoration(
         hintText:hintText,
         filled: true,
+        fillColor: Colors.grey.shade100,
         prefixIcon: Icon(icon,color: AppConstants.primaryColor,size: 20,),
         suffixIcon: suffixIcon,
         hintStyle: TextStyle(color: Colors.grey),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
           borderSide: BorderSide(color:AppConstants.primaryColor)
-        )
-      ),
+        ),
+        focusedBorder:  OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: BorderSide(color:AppConstants.primaryColor),
+      ),),
     );
   }
 }

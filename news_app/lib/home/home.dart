@@ -2,11 +2,9 @@ import 'package:depi_bloc/home/home_cubit.dart';
 import 'package:depi_bloc/home_details/home_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lottie/lottie.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
-
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -98,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   builder: (context, state) {
                     if (state is HomeLoading) {
                       return  Center(
-                          child: Lottie.asset('assets/lottie/loading (3).json'));
+                          child: CircularProgressIndicator());
                     }
                     if (state is HomeFailure) {
                       return Center(child: Text(state.msg));
@@ -127,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   Expanded(
                                     child: Image.network(
                                       state.data[index].image ??
-                                          'https://picsum.photos/id/237/400/400',
+                                          '',
                                       errorBuilder: (context, error, stackTrace) {
                                         return const Icon(
                                           Icons.error,

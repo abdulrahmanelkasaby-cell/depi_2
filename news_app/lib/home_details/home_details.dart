@@ -1,4 +1,3 @@
-
 import 'package:depi_bloc/models/article_model.dart';
 import 'package:depi_bloc/widgets/custom_appbar_details.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +26,7 @@ class HomeDetails extends StatelessWidget {
           Row(
             spacing: 4,
             children: [
-              Text(model.author ??'No Author',style: TextStyle(fontSize: 12,fontWeight: FontWeight.w600),),
+              Text(model.author ??'abdelrahman',style: TextStyle(fontSize: 12,fontWeight: FontWeight.w600),),
               Spacer(),
               Icon(Icons.favorite_border_sharp),
               Text('204',style: TextStyle(fontSize: 12,fontWeight: FontWeight.w600))

@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../home/home.dart';
 import '../nav_bar/nav_bar.dart';
-
-
 class InsightScreen extends StatefulWidget {
   const InsightScreen({super.key});
 
@@ -32,12 +28,8 @@ class _InsightScreenState extends State<InsightScreen> {
       body: Center(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
-
           children: [
             Image.asset('assets/images/img.png',),
-
-
-
           ],
         ),
       ),

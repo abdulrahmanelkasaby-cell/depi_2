@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:store_depi_3/widets/header_auth.dart';
 
 import 'core/helpers/app_button.dart';
 import 'core/helpers/app_field.dart';
+
+import 'core/helpers/constans.dart';
+import 'login/login_cubit.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -12,7 +18,22 @@ class LoginScreen extends StatelessWidget {
       create: (context) => LoginCubit(),
       child: Scaffold(
         backgroundColor: Colors.white,
-        body: SingleChildScrollView(
+        body: BlocConsumer<LoginCubit, LoginState>(
+  listener: (context, state) {
+    if(state is LoginSuccess){
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(backgroundColor:Colors.green,content:Text('Login Success' )));
+    }
+    if(state is LoginFailure){
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(backgroundColor:Colors.red,content:Text(state.msg )));
+    }
+  },
+  builder: (context, state) {
+    final cubit =BlocProvider.of<LoginCubit>(context);
+    if(state is LoginLoading){
+      return Center(child: CircularProgressIndicator(
+        color: AppConstants.primaryColor,),);
+    }
+    return SingleChildScrollView(
             child: Padding(
               padding: EdgeInsets.only(
                   top: 30, bottom: 12, left: 12, right: 12),
@@ -20,25 +41,25 @@ class LoginScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 spacing: 12,
                 children: [
-                  Image.network('src', height: 150,),
-                  Text('dhb',
-                    textAlign: TextAlign.center
-                    , style: TextStyle(fontWeight: FontWeight.bold,
-                        fontSize: 14, color: Colors.grey.shade300),),
 
-                  //namefield
-
-
-                  AppField(hintText: 'Email', icon: Icons.mail),
+                  HeaderAuth(title: 'Welcome Back', header: 'Log in to your account using email \nor social media'),
+                  SizedBox(height: 10,),
                   AppField(
+                      controller: cubit.emailControl,
+                      hintText: 'Email', icon: Icons.mail),
+                  AppField(
+                    controller: cubit.passwordControl,
                       hintText: 'PassWord', icon: Icons.lock_outline_rounded),
-
-                  AppButton(onPressed: () {}, text: 'Login'),
+                  Text('Forget Password',textAlign: TextAlign.end,style: TextStyle(color: AppConstants.primaryColor,fontSize: 14,fontWeight: FontWeight.w500),),
+                  SizedBox(height: 5,),
+                  AppButton(onPressed: () {cubit.login();}, text: 'Login'),
 
                 ],
               ),
             )
-        ),
+        );
+  },
+),
       ),
     );
   }

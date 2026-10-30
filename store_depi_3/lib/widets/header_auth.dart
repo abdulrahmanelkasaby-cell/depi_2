@@ -10,12 +10,13 @@ class HeaderAuth extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
         children: [
-          Image.network('src',height: 150,),
-          Text(title),
-          Text('dhb',
+          SizedBox(height: 30),
+          Image.asset('assets/images/img.png',height: 150,),
+          Text(title,style: TextStyle(fontWeight: FontWeight.w900,fontSize: 24),),
+          Text(header,
             textAlign: TextAlign.center
             ,style: TextStyle(fontWeight: FontWeight.bold,
-                fontSize: 14,color: Colors.grey.shade300),)
+                fontSize: 18,color: Colors.grey.shade300),)
         ],);
   }
 }

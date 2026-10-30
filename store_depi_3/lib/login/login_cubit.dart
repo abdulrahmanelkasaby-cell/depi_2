@@ -14,7 +14,7 @@ class LoginCubit extends Cubit<LoginState> {
   Future<void>login() async{
     try{
       emit(LoginLoading());
-     final Response response = await dio.post('', data:{
+     final Response response = await dio.post('https://api.escuelajs.co/api/v1/auth/login', data:{
        'email':emailControl.text,
        'password':passwordControl.text
 
@@ -22,9 +22,13 @@ class LoginCubit extends Cubit<LoginState> {
      if(response.statusCode == 200 ||response.statusCode == 201 ){
        emit(LoginSuccess());
      }else{
-
+         emit(LoginFailure("there is an error"));
      }
 
+    }on DioException catch(E){
+      emit(LoginFailure(E.message ?? "Dio Exception" ));
+    }catch(e){
+      emit(LoginFailure(e.toString()));
     }
 }
 
